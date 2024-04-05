@@ -18,3 +18,29 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:8080/venues
+Content-Type: application/json
+
+{
+    "name":"the DOME",
+    "location":"Arakale shoprite road", 
+    "capacity": "5000", 
+    "facilities":"Full catering service, professional audio-visual equipment, dance floor, outdoor space, and parking", 
+    "pricing":"80000.00"
+}
+
+###
+PUT http://localhost:8080/venues/2
+Content-Type: application/json
+
+{
+     "name":"civic center",
+    "location":"Arakale oda road", 
+    "capacity": "4000", 
+    "facilities":"Full catering service, dance floor, outdoor space, and parking", 
+    "pricing":"41000.10"
+}
+
+###
+DELETE http://localhost:8080/venues/2
+Content-Type: application/json

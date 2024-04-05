@@ -39,14 +39,23 @@ app.post("/venues", bodyParser.json(), function (req, res) {
     });
 })
 //creating an endpoint for updating a venue by id
-app.put('/venues/:id', (req, res) => {
+app.put("/venues/:id", bodyParser.json(), function (req, res) {
     const { id } = req.params;
     const { name, location, capacity, facilities, pricing } = req.body;
     const sql = 'UPDATE venues SET name = ?, location = ?, capacity = ?, facilities = ?, pricing = ? WHERE id = ?';
-    con.query(sql, [name, location, capacity, facilities, pricing, id], (err, result) => {
+    con.query(sql, [name, location, capacity, facilities, pricing, id], function (err, result) {
         if (err) throw err;
         res.send(result);
         message: 'Venue updated successfully'
+    });
+});
+// creating an endpoint for deleting a venue by id
+app.delete('/venues/:id', bodyParser.json(), function (req, res) {
+    var { id } = req.params;
+    var sql = 'DELETE FROM venues WHERE id = ?';
+    con.query(sql, [id], function (err, result) {
+        if (err) throw err;
+        res.send(result);
     });
 });
 app.listen(8080),
